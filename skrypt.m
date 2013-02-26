@@ -20,7 +20,6 @@ Twew_n = 20;       % [C] temperatura wewnetrzna
 Tgz_n = 90;        % [C] temperatura zasilania grzejnika
 Tgp_n = 70;        % [C] temperatura powrotu z grzejnika
 Q_n = 20000;       % [W] cieplo wymagane
-Qt_n = 0;          % [W] straty/zyski technologiczne
 
 Tgsr_n = Tgp_n;                     % [C] temperatura srednia grzejnika
 Fg_n = Q_n/(cpw*row*(Tgz_n-Tgp_n)); % [m3 / s] przeplyw wody przez grzejnik
@@ -32,13 +31,15 @@ Twew_0 = Twew_n;   % [C] temperatura wewnetrzna
 Tgz_0 = Tgz_n;     % [C] temperatura zasilania grzejnika
 Tgp_0 = Tgp_n;     % [C] temperatura powrotu z grzejnika
 Fg_0 = Fg_n;       % [m3 / s] przeplyw wody przez grzejnik
+Qt_0 = 0;          % [W] straty/zyski technologiczne
 
 %% zmiany wartosci
 
-dTzewn = 0;        % [C] zmiana temperatury zewnetrznej
+dTzew = 0;        % [C] zmiana temperatury zewnetrznej
 dTgz = 0;          % [C] zmiana temperatury zasilania grzejnika
 dTgp = 0;          % [C] zmiana temperatury powrotu z grzejnika
 dFg = 0;           % [m3 / s] przeplyw wody przez grzejnik
+dQt = 0;           % [W] straty/zyski technologiczne
 
 %% wspolczynniki
 
