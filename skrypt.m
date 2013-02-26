@@ -5,6 +5,9 @@ Twew_n = 20;       % [C] temperatura wewnetrzna
 Tgz_n = 90;        % [C] temperatura zasilania grzejnika
 Tgp_n = 70;        % [C] temperatura powrotu z grzejnika
 Q_n = 20000;       % [W] cieplo wymagane
+Qt_n = 0;          % [W] straty/zyski technologiczne
+
+Tgsr_n = Tgp_n;    % [C] temperatura srednia grzejnika
 
 %% parametry pomieszczenia i grzejnika
 
@@ -13,8 +16,28 @@ Vp = 75;           % [m3] objetosc pomieszczenia
 
 %% parametry fizyczne
 
+cpw = 4190;        % [J / kg*K] cieplo wlasciwe wody
+row = 980;         % [kg / m3] gestosc wody
+cpp = 1008;        % [J / kg*K] cieplo wlasciwe powietrza     
+rop = 1.185;       % [kg / m3] gestosc powietrza
 
-
-
+Cvg = cpw*row*Vg;  % [W] pojemnosc cieplna grzejnika
+Cvw = cpp*rop*Vp;  % [W] pojemnosc cieplna pomieszczenia
 
 %% wartosci poczatkowe
+
+Tzewn_0 = Tzewn_n; % [C] temperatura zewnetrzna
+Twew_0 = Twew_n;   % [C] temperatura wewnetrzna
+Tgz_0 = Tgz_n;     % [C] temperatura zasilania grzejnika
+Tgp_0 = Tgp_n;     % [C] temperatura powrotu z grzejnika
+
+%% zmiany wartosci
+
+dTzewn = 0;        % [C] zmiana temperatury zewnetrznej
+dTgz = 0;          % [C] zmiana temperatury zasilania grzejnika
+dTgp = 0;          % [C] zmiana temperatury powrotu z grzejnika
+
+%% wspolczynniki
+
+kg = Q_n/(Tgsr_n-Twew_n);
+kw = (Q_n-Qt_n)/(Twew_n-Tzew_n);
