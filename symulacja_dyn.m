@@ -1,4 +1,6 @@
-function [ ] = symulacja( Vg_,  Vp_, cpw_, row_, cpp_, rop_, Tzew_n_, Twew_n_, Tgz_n_, Tgp_n_, Q_n_, dTzew_, dTgz_, dFg_, dQt_)
+function [out_data] = symulacja( Vg_,  Vp_, cpw_, row_, cpp_, rop_, Tzew_n_, Twew_n_, Tgz_n_, Tgp_n_, Q_n_, dTzew_, dTgz_, dFg_, dQt_)
+% out_data = [time', temp_wewnatrz', temp_grzejnika]
+
 
 %% deklaracja zmiennych globalnych
 global Vg
@@ -82,6 +84,7 @@ kw = (Q_n-Qt_0)/(Twew_n-Tzew_n);  % wspolczynnik przewodzenia scian
 
 sim('lab2_model_bloczek')
 
+out_data = [T_wew_out.time, T_wew_out.signals.values, T_gsr_out.signals.values];
 
 end
 
