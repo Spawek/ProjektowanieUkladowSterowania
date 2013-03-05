@@ -2,7 +2,9 @@
 
 clear all;
 
-dt=5;              % [s] opoznienie startu symulacji
+%% parametry symulacji
+
+dt = 5;              % [s] opoznienie startu symulacji
 
 %% parametry pomieszczenia i grzejnika
 
@@ -50,3 +52,7 @@ dQt = 0;           % [W] straty/zyski technologiczne
 
 kg = Q_n/(Tgsr_n-Twew_n);         % wspolczynnik przewodzenia grzejnika
 kw = (Q_n-Qt_0)/(Twew_n-Tzew_n);  % wspolczynnik przewodzenia scian
+
+%% symulacja
+
+sim('lab2_model_bloczek');
