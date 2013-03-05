@@ -1,3 +1,9 @@
+%% czyszczenie
+
+clear all;
+
+dt=5;              % [s] opoznienie startu symulacji
+
 %% parametry pomieszczenia i grzejnika
 
 Vg = 0.1;          % [m3] objetosc grzejnika
@@ -29,19 +35,18 @@ Fg_n = Q_n/(cpw*row*(Tgz_n-Tgp_n)); % [m3 / s] przeplyw wody przez grzejnik
 Tzew_0 = Tzew_n;   % [C] temperatura zewnetrzna
 Twew_0 = Twew_n;   % [C] temperatura wewnetrzna
 Tgz_0 = Tgz_n;     % [C] temperatura zasilania grzejnika
-Tgp_0 = Tgp_n;     % [C] temperatura powrotu z grzejnika
+Tgsr_0 = Tgsr_n;   % [C] temperatura powrotu z grzejnika
 Fg_0 = Fg_n;       % [m3 / s] przeplyw wody przez grzejnik
 Qt_0 = 0;          % [W] straty/zyski technologiczne
 
 %% zmiany wartosci
 
-dTzew = 0;        % [C] zmiana temperatury zewnetrznej
+dTzew = 0;         % [C] zmiana temperatury zewnetrznej
 dTgz = 0;          % [C] zmiana temperatury zasilania grzejnika
-dTgp = 0;          % [C] zmiana temperatury powrotu z grzejnika
 dFg = 0;           % [m3 / s] przeplyw wody przez grzejnik
 dQt = 0;           % [W] straty/zyski technologiczne
 
 %% wspolczynniki
 
-kg = Q_n/(Tgsr_n-Twew_n);         % ???
-kw = (Q_n-Qt_n)/(Twew_n-Tzew_n);  % ???
+kg = Q_n/(Tgsr_n-Twew_n);         % wspolczynnik przewodzenia grzejnika
+kw = (Q_n-Qt_0)/(Twew_n-Tzew_n);  % wspolczynnik przewodzenia scian

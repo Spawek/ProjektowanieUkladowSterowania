@@ -1,12 +1,12 @@
 Model {
   Name			  "lab1_model"
-  Version		  7.9
+  Version		  7.6
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.29"
+    ComputedModelVersion    "1.31"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -19,25 +19,23 @@ Model {
   DataTypeOverrideAppliesTo "AllNumericTypes"
   MinMaxOverflowLogging	  "UseLocalSettings"
   MinMaxOverflowArchiveMode "Overwrite"
-  FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
   Created		  "Tue Feb 26 15:55:11 2013"
   Creator		  "LAB320-1537-User"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "LAB320-1537-User"
+  LastModifiedBy	  "qrczak"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Feb 26 16:53:11 2013"
-  RTWModifiedTimeStamp	  283795043
-  ModelVersionFormat	  "1.%<AutoIncrement:29>"
+  LastModifiedDate	  "Mon Mar 04 19:50:39 2013"
+  RTWModifiedTimeStamp	  284326051
+  ModelVersionFormat	  "1.%<AutoIncrement:31>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
-  LibraryLinkDisplay	  "disabled"
+  LibraryLinkDisplay	  "none"
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
-  ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
   ShowStorageClass	  off
@@ -62,24 +60,6 @@ Model {
   AccelTemplateMakefile	  "accel_default_tmf"
   AccelMakeCommand	  "make_rtw"
   TryForcingSFcnDF	  off
-  Object {
-    $PropName		    "DataLoggingOverride"
-    $ObjectID		    1
-    $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "lab1_model"
-    overrideMode_	    [0.0]
-    Array {
-      Type		      "Cell"
-      Dimension		      1
-      Cell		      "lab1_model"
-      PropName		      "logAsSpecifiedByModels_"
-    }
-    Array {
-      Type		      "Cell"
-      Dimension		      0
-      PropName		      "logAsSpecifiedByModelsSSIDs_"
-    }
-  }
   RecordCoverage	  off
   CovPath		  "/"
   CovSaveName		  "covdata"
@@ -122,16 +102,16 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      2
-      Version		      "1.12.0"
+      $ObjectID		      1
+      Version		      "1.10.0"
       Array {
 	Type			"Handle"
 	Dimension		8
 	Simulink.SolverCC {
-	  $ObjectID		  3
-	  Version		  "1.12.0"
+	  $ObjectID		  2
+	  Version		  "1.10.0"
 	  StartTime		  "0.0"
-	  StopTime		  "10.0"
+	  StopTime		  "20"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -147,7 +127,6 @@ Model {
 	  MaxConsecutiveMinStep	  "1"
 	  RelTol		  "1e-3"
 	  SolverMode		  "Auto"
-	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
 	  Solver		  "ode45"
 	  SolverName		  "ode45"
@@ -163,8 +142,8 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  4
-	  Version		  "1.12.0"
+	  $ObjectID		  3
+	  Version		  "1.10.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -176,7 +155,6 @@ Model {
 	  SaveFinalState	  off
 	  SaveCompleteFinalSimState off
 	  SaveFormat		  "Array"
-	  SignalLoggingSaveFormat "ModelDataLogs"
 	  SaveOutput		  on
 	  SaveState		  off
 	  SignalLogging		  on
@@ -195,8 +173,8 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  5
-	  Version		  "1.12.0"
+	  $ObjectID		  4
+	  Version		  "1.10.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -215,7 +193,6 @@ Model {
 	  ConditionallyExecuteInputs on
 	  InlineParams		  off
 	  UseIntDivNetSlope	  off
-	  UseFloatMulNetSlope	  off
 	  UseSpecifiedMinMax	  off
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
@@ -248,11 +225,10 @@ Model {
 	  BufferReusableBoundary  on
 	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
-	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  6
-	  Version		  "1.12.0"
+	  $ObjectID		  5
+	  Version		  "1.10.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -307,7 +283,6 @@ Model {
 	  UnconnectedOutputMsg	  "warning"
 	  UnconnectedLineMsg	  "warning"
 	  SFcnCompatibilityMsg	  "none"
-	  FrameProcessingCompatibilityMsg "warning"
 	  UniqueDataStoreMsg	  "none"
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
@@ -324,7 +299,6 @@ Model {
 	  ModelReferenceExtraNoncontSigs "error"
 	  StateNameClashWarn	  "warning"
 	  SimStateInterfaceChecksumMismatchMsg "warning"
-	  SimStateOlderReleaseMsg "error"
 	  InitInArrayFormatMsg	  "warning"
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
@@ -336,11 +310,10 @@ Model {
 	  SFInvalidInputDataAccessInChartInitDiag "warning"
 	  SFNoUnconditionalDefaultTransitionDiag "warning"
 	  SFTransitionOutsideNaturalParentDiag "warning"
-	  SFUnconditionalTransitionShadowingDiag "warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  7
-	  Version		  "1.12.0"
+	  $ObjectID		  6
+	  Version		  "1.10.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -376,8 +349,8 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  8
-	  Version		  "1.12.0"
+	  $ObjectID		  7
+	  Version		  "1.10.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
@@ -391,8 +364,8 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  9
-	  Version		  "1.12.0"
+	  $ObjectID		  8
+	  Version		  "1.10.0"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
@@ -406,8 +379,8 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  10
-	  Version		  "1.12.0"
+	  $ObjectID		  9
+	  Version		  "1.10.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    9
@@ -451,9 +424,7 @@ Model {
 	  GenerateTraceReportSf	  off
 	  GenerateTraceReportEml  off
 	  GenerateCodeInfo	  off
-	  GenerateWebview	  off
-	  GenerateCodeMetricsReport off
-	  GenerateCodeReplacementReport	off
+	  GenerateSLWebview	  off
 	  RTWCompilerOptimization "Off"
 	  CheckMdlBeforeBuild	  "Off"
 	  CustomRebuildMode	  "OnUpdate"
@@ -461,8 +432,8 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      11
-	      Version		      "1.12.0"
+	      $ObjectID		      10
+	      Version		      "1.10.0"
 	      Array {
 		Type			"Cell"
 		Dimension		21
@@ -526,8 +497,8 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      12
-	      Version		      "1.12.0"
+	      $ObjectID		      11
+	      Version		      "1.10.0"
 	      Array {
 		Type			"Cell"
 		Dimension		16
@@ -552,10 +523,10 @@ Model {
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
 	      TargetPreCompLibLocation ""
-	      CodeReplacementLibrary  "ANSI_C"
+	      TargetFunctionLibrary   "ANSI_C"
 	      UtilityFuncGeneration   "Auto"
 	      ERTMultiwordTypeDef     "System defined"
-	      CodeExecutionProfiling  off
+	      ERTCodeCoverageTool     "None"
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
@@ -565,7 +536,6 @@ Model {
 	      ModelReferenceCompliant on
 	      ParMdlRefBuildCompliant on
 	      CompOptLevelCompliant   on
-	      ConcurrentExecutionCompliant on
 	      IncludeMdlTerminateFcn  on
 	      GeneratePreprocessorConditionals "Disable all"
 	      CombineOutputUpdateFcns on
@@ -590,7 +560,6 @@ Model {
 	      ModelStepFunctionPrototypeControlCompliant off
 	      CPPClassGenCompliant    off
 	      AutosarCompliant	      off
-	      GRTInterface	      off
 	      UseMalloc		      off
 	      ExtMode		      off
 	      ExtModeStaticAlloc      off
@@ -602,7 +571,6 @@ Model {
 	      RTWCAPISignals	      off
 	      RTWCAPIParams	      off
 	      RTWCAPIStates	      off
-	      RTWCAPIRootIO	      off
 	      GenerateASAP2	      off
 	    }
 	    PropName		    "Components"
@@ -612,15 +580,14 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 280, 135, 1160, 765 ] 
+      ConfigPrmDlgPosition    " [ 280, 135, 1160, 765 ] "
     }
     PropName		    "ConfigurationSets"
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    2
+    $ObjectID		    1
   }
-  ExplicitPartitioning	  off
   BlockDefaults {
     ForegroundColor	    "black"
     BackgroundColor	    "white"
@@ -654,19 +621,6 @@ Model {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      Constant
-      Value		      "1"
-      VectorParams1D	      on
-      SamplingMode	      "Sample based"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
-      LockScale		      off
-      SampleTime	      "inf"
-      FramePeriod	      "inf"
-      PreserveConstantTs      off
-    }
-    Block {
       BlockType		      From
       IconDisplay	      "Tag"
       TagVisibility	      "local"
@@ -689,7 +643,6 @@ Model {
     Block {
       BlockType		      Goto
       IconDisplay	      "Tag"
-      TagVisibility	      "local"
     }
     Block {
       BlockType		      Integrator
@@ -732,7 +685,6 @@ Model {
       YMax		      "5"
       SaveToWorkspace	      off
       SaveName		      "ScopeData"
-      DataFormat	      "Array"
       LimitDataPoints	      on
       MaxDataPoints	      "5000"
       Decimation	      "1"
@@ -767,7 +719,7 @@ Model {
   }
   System {
     Name		    "lab1_model"
-    Location		    [2, 74, 1438, 839]
+    Location		    [2, 74, 1278, 659]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -781,97 +733,291 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "59"
+    SIDHighWatermark	    "109"
     Block {
-      BlockType		      From
-      Name		      "From"
-      SID		      "54"
-      Position		      [765, 399, 935, 431]
-      ZOrder		      -9
-      GotoTag		      "temp_pomieszczenia"
+      BlockType		      Step
+      Name		      "Fg"
+      SID		      "106"
+      Position		      [185, 25, 215, 55]
+      Time		      "dt"
+      Before		      "Fg_0"
+      After		      "Fg_0+dFg"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      From
       Name		      "From1"
-      SID		      "57"
-      Position		      [320, 246, 650, 284]
-      ZOrder		      -9
-      GotoTag		      "cieplo_oddawane_przez_grzejnik_do_pomieszczenia"
+      SID		      "98"
+      Position		      [30, 456, 70, 484]
+      GotoTag		      "Tgz"
+      IconDisplay	      "Signal name"
     }
     Block {
-      BlockType		      Goto
-      Name		      "Goto"
-      SID		      "55"
-      Position		      [1030, 276, 1205, 304]
-      ZOrder		      -10
-      GotoTag		      "temp_pomieszczenia"
+      BlockType		      From
+      Name		      "From2"
+      SID		      "76"
+      Position		      [180, 161, 220, 189]
+      GotoTag		      "Qt"
+      IconDisplay	      "Signal name"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From3"
+      SID		      "80"
+      Position		      [30, 226, 70, 254]
+      GotoTag		      "Twew"
+      IconDisplay	      "Signal name"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From4"
+      SID		      "81"
+      Position		      [30, 161, 70, 189]
+      GotoTag		      "Tzew"
+      IconDisplay	      "Signal name"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From5"
+      SID		      "82"
+      Position		      [30, 286, 70, 314]
+      GotoTag		      "Tgsr"
+      IconDisplay	      "Signal name"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From6"
+      SID		      "86"
+      Position		      [30, 396, 70, 424]
+      GotoTag		      "Tgsr"
+      IconDisplay	      "Signal name"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From7"
+      SID		      "87"
+      Position		      [30, 356, 70, 384]
+      ShowName		      off
+      GotoTag		      "Twew"
+      IconDisplay	      "Signal name"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From8"
+      SID		      "102"
+      Position		      [30, 511, 70, 539]
+      GotoTag		      "Fg"
+      IconDisplay	      "Signal name"
     }
     Block {
       BlockType		      Goto
       Name		      "Goto1"
-      SID		      "56"
-      Position		      [320, 422, 655, 458]
-      ZOrder		      -10
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      GotoTag		      "cieplo_oddawane_przez_grzejnik_do_pomieszczenia"
+      SID		      "89"
+      Position		      [480, 395, 520, 425]
+      ShowName		      off
+      GotoTag		      "Tgsr"
+      TagVisibility	      "local"
     }
     Block {
-      BlockType		      Integrator
-      Name		      "Integrator"
-      SID		      "1"
-      Ports		      [1, 1]
-      Position		      [880, 200, 910, 230]
-      ZOrder		      -2
-      InitialCondition	      "Twew_n"
+      BlockType		      Goto
+      Name		      "Goto2"
+      SID		      "62"
+      Position		      [480, 225, 520, 255]
+      ShowName		      off
+      GotoTag		      "Twew"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto3"
+      SID		      "67"
+      Position		      [105, 25, 145, 55]
+      ShowName		      off
+      GotoTag		      "Qt"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto4"
+      SID		      "104"
+      Position		      [280, 25, 320, 55]
+      ShowName		      off
+      GotoTag		      "Fg"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto5"
+      SID		      "69"
+      Position		      [450, 25, 490, 55]
+      ShowName		      off
+      GotoTag		      "Tzew"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto6"
+      SID		      "107"
+      Position		      [625, 25, 665, 55]
+      ShowName		      off
+      GotoTag		      "Tgz"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Integrator
       Name		      "Integrator1"
-      SID		      "28"
+      SID		      "90"
       Ports		      [1, 1]
-      Position		      [820, 560, 850, 590]
-      ZOrder		      -2
-      InitialCondition	      "Tgp_n"
+      Position		      [410, 395, 440, 425]
+      ShowName		      off
+      InitialCondition	      "Tgsr_0"
+    }
+    Block {
+      BlockType		      Integrator
+      Name		      "Integrator2"
+      SID		      "60"
+      Ports		      [1, 1]
+      Position		      [410, 225, 440, 255]
+      ShowName		      off
+      InitialCondition	      "Twew_0"
     }
     Block {
       BlockType		      Product
-      Name		      "Product5"
-      SID		      "44"
-      Ports		      [3, 1]
-      Position		      [570, 559, 600, 591]
-      ZOrder		      -13
-      Inputs		      "3"
+      Name		      "Product"
+      SID		      "103"
+      Ports		      [2, 1]
+      Position		      [185, 462, 215, 493]
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum"
-      SID		      "4"
-      Ports		      [2, 1]
-      Position		      [990, 70, 1010, 90]
-      ZOrder		      -18
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      Step
+      Name		      "Qt"
+      SID		      "64"
+      Position		      [20, 25, 50, 55]
+      Time		      "dt"
+      Before		      "Qt_0"
+      After		      "Qt_0+dQt"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope"
+      SID		      "63"
+      Ports		      [1]
+      Position		      [485, 159, 515, 191]
+      Floating		      off
+      Location		      [1, 48, 1281, 679]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData2"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope1"
+      SID		      "70"
+      Ports		      [1]
+      Position		      [110, 69, 140, 101]
+      Floating		      off
+      Location		      [188, 390, 512, 629]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData3"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope2"
+      SID		      "105"
+      Ports		      [1]
+      Position		      [285, 69, 315, 101]
+      Floating		      off
+      Location		      [1, 48, 1281, 679]
+      Open		      off
+      NumInputPorts	      "1"
+      ZoomMode		      "yonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope3"
+      SID		      "73"
+      Ports		      [1]
+      Position		      [455, 69, 485, 101]
+      Floating		      off
+      Location		      [188, 390, 512, 629]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData5"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope4"
+      SID		      "91"
+      Ports		      [1]
+      Position		      [485, 329, 515, 361]
+      Floating		      off
+      Location		      [188, 390, 512, 629]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope5"
+      SID		      "108"
+      Ports		      [1]
+      Position		      [630, 69, 660, 101]
+      Floating		      off
+      Location		      [188, 390, 512, 629]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData4"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Sum
       Name		      "Sum1"
-      SID		      "20"
-      Ports		      [3, 1]
-      Position		      [685, 205, 705, 225]
-      ZOrder		      -18
+      SID		      "92"
+      Ports		      [2, 1]
+      Position		      [250, 400, 270, 420]
       ShowName		      off
       IconShape		      "round"
-      Inputs		      "+++"
+      Inputs		      "|-+"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -879,26 +1025,9 @@ Model {
     Block {
       BlockType		      Sum
       Name		      "Sum2"
-      SID		      "30"
+      SID		      "93"
       Ports		      [2, 1]
-      Position		      [975, 475, 995, 495]
-      ZOrder		      -18
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum3"
-      SID		      "36"
-      Ports		      [2, 1]
-      Position		      [670, 565, 690, 585]
-      ZOrder		      -18
+      Position		      [110, 400, 130, 420]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "-+|"
@@ -908,86 +1037,104 @@ Model {
     }
     Block {
       BlockType		      Sum
-      Name		      "Sum4"
-      SID		      "47"
+      Name		      "Sum3"
+      SID		      "100"
       Ports		      [2, 1]
-      Position		      [490, 655, 510, 675]
-      ZOrder		      -18
+      Position		      [110, 460, 130, 480]
       ShowName		      off
       IconShape		      "round"
-      Inputs		      "+-"
+      Inputs		      "-+|"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum5"
+      SID		      "75"
+      Ports		      [3, 1]
+      Position		      [250, 230, 270, 250]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "+-+"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum6"
+      SID		      "79"
+      Ports		      [2, 1]
+      Position		      [110, 230, 130, 250]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "-+|"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum7"
+      SID		      "84"
+      Ports		      [2, 1]
+      Position		      [110, 290, 130, 310]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "-+|"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      Step
-      Name		      "Tgz_n"
-      SID		      "41"
-      Position		      [440, 615, 470, 645]
-      ZOrder		      -22
+      Name		      "Tgz"
+      SID		      "109"
+      Position		      [530, 25, 560, 55]
+      Time		      "dt"
       Before		      "Tgz_0"
       After		      "Tgz_0+dTgz"
       SampleTime	      "0"
     }
     Block {
       BlockType		      Step
-      Name		      "Tzewn_n"
-      SID		      "2"
-      Position		      [925, 25, 955, 55]
-      ZOrder		      -22
+      Name		      "Tzew"
+      SID		      "65"
+      Position		      [355, 25, 385, 55]
+      Time		      "dt"
       Before		      "Tzew_0"
       After		      "Tzew_0+dTzew"
       SampleTime	      "0"
     }
     Block {
-      BlockType		      Step
-      Name		      "doplyw_wody"
-      SID		      "11"
-      Position		      [480, 470, 510, 500]
-      ZOrder		      -22
-      Before		      "Fg_0"
-      After		      "Fg_0+dFg"
-      SampleTime	      "0"
-    }
-    Block {
       BlockType		      Gain
-      Name		      "pojemnosc_cieplna_grzejnika"
-      SID		      "52"
-      Position		      [730, 548, 795, 602]
-      ZOrder		      -8
-      Gain		      "1/Cvg"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "pojemnosc_cieplna_pomieszczenia"
-      SID		      "50"
-      Position		      [765, 188, 830, 242]
-      ZOrder		      -8
+      Name		      "pojemnosc_cieplna_pomieszczenia1"
+      SID		      "61"
+      Position		      [320, 213, 385, 267]
+      ShowName		      off
       Gain		      "1/Cvw"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Constant
-      Name		      "pojemnosc_cieplna_wody"
-      SID		      "49"
-      Position		      [415, 531, 470, 579]
-      ZOrder		      -4
-      Value		      "row*cpw"
+      BlockType		      Gain
+      Name		      "pojemnosc_cieplna_pomieszczenia2"
+      SID		      "77"
+      Position		      [180, 221, 220, 259]
+      ShowName		      off
+      Gain		      "kw"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      Gain
-      Name		      "stala_oddawania_temp_z_grzejnika"
-      SID		      "51"
-      Position		      [805, 458, 870, 512]
-      ZOrder		      -8
-      BlockMirror	      on
-      NamePlacement	      "alternate"
+      Name		      "pojemnosc_cieplna_pomieszczenia3"
+      SID		      "78"
+      Position		      [180, 281, 220, 319]
+      ShowName		      off
       Gain		      "kg"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -995,237 +1142,268 @@ Model {
     }
     Block {
       BlockType		      Gain
-      Name		      "stala_oddawania_temp_z_pomieszczenia_na_zewnatrz"
-      SID		      "53"
-      Position		      [730, 53, 795, 107]
-      ZOrder		      -8
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      Gain		      "kw"
+      Name		      "pojemnosc_cieplna_pomieszczenia4"
+      SID		      "95"
+      Position		      [320, 383, 385, 437]
+      ShowName		      off
+      Gain		      "1/Cvg"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Scope
-      Name		      "temp_grzejnika"
-      SID		      "42"
-      Ports		      [1]
-      Position		      [1035, 524, 1065, 556]
-      ZOrder		      -16
-      Floating		      off
-      Location		      [188, 390, 512, 629]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      ShowLegends	      off
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      BlockType		      Gain
+      Name		      "pojemnosc_cieplna_pomieszczenia5"
+      SID		      "96"
+      Position		      [180, 391, 220, 429]
+      ShowName		      off
+      Gain		      "kg"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Scope
-      Name		      "temp_pomieszczenia"
-      SID		      "3"
-      Ports		      [1]
-      Position		      [1050, 199, 1080, 231]
-      ZOrder		      -16
-      Floating		      off
-      Location		      [188, 390, 512, 629]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      ShowLegends	      off
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Step
-      Name		      "zaklucenia_zewnetrzne"
-      SID		      "59"
-      Position		      [575, 200, 605, 230]
-      ZOrder		      -22
-      Before		      "Qt_0"
-      After		      "Qt_0+dQt"
-      SampleTime	      "0"
+      BlockType		      Gain
+      Name		      "pojemnosc_cieplna_pomieszczenia6"
+      SID		      "101"
+      Position		      [100, 506, 140, 544]
+      ShowName		      off
+      Gain		      "cpw*row"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Line {
-      SrcBlock		      "Tzewn_n"
+      SrcBlock		      "pojemnosc_cieplna_pomieszczenia1"
       SrcPort		      1
-      Points		      [40, 0]
-      DstBlock		      "Sum"
+      DstBlock		      "Integrator2"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Integrator1"
+      SrcBlock		      "Integrator2"
       SrcPort		      1
-      Points		      [25, 0]
+      Points		      [15, 0]
       Branch {
-	Points			[105, 0; 0, -35]
-	Branch {
-	  DstBlock		  "temp_grzejnika"
-	  DstPort		  1
-	}
-	Branch {
-	  DstBlock		  "Sum2"
-	  DstPort		  2
-	}
+	DstBlock		"Goto2"
+	DstPort			1
       }
       Branch {
-	Points			[0, 115]
-	DstBlock		"Sum4"
-	DstPort			2
+	Points			[0, -65]
+	DstBlock		"Scope"
+	DstPort			1
       }
     }
     Line {
-      SrcBlock		      "Product5"
+      SrcBlock		      "Qt"
       SrcPort		      1
-      DstBlock		      "Sum3"
+      Points		      [15, 0]
+      Branch {
+	DstBlock		"Goto3"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 45]
+	DstBlock		"Scope1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Tzew"
+      SrcPort		      1
+      Points		      [20, 0]
+      Branch {
+	Points			[0, 45]
+	DstBlock		"Scope3"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Goto5"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Sum5"
+      SrcPort		      1
+      DstBlock		      "pojemnosc_cieplna_pomieszczenia1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From2"
+      SrcPort		      1
+      Points		      [35, 0]
+      DstBlock		      "Sum5"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "pojemnosc_cieplna_pomieszczenia2"
+      SrcPort		      1
+      DstBlock		      "Sum5"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "doplyw_wody"
+      SrcBlock		      "pojemnosc_cieplna_pomieszczenia3"
       SrcPort		      1
-      Points		      [20, 0; 0, 80]
-      DstBlock		      "Product5"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "stala_oddawania_temp_z_grzejnika"
-      SrcPort		      1
-      Points		      [-120, 0]
-      Branch {
-	DstBlock		"Sum3"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -45]
-	DstBlock		"Goto1"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Integrator"
-      SrcPort		      1
-      Points		      [85, 0]
-      Branch {
-	DstBlock		"temp_pomieszczenia"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"Sum"
-	DstPort			2
-      }
-      Branch {
-	Points			[0, 75]
-	DstBlock		"Goto"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Tgz_n"
-      SrcPort		      1
-      Points		      [25, 0]
-      DstBlock		      "Sum4"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum4"
-      SrcPort		      1
-      Points		      [35, 0; 0, -80]
-      DstBlock		      "Product5"
+      Points		      [35, 0]
+      DstBlock		      "Sum5"
       DstPort		      3
     }
     Line {
-      SrcBlock		      "pojemnosc_cieplna_wody"
+      SrcBlock		      "Sum6"
       SrcPort		      1
-      Points		      [0, 20]
-      DstBlock		      "Product5"
+      DstBlock		      "pojemnosc_cieplna_pomieszczenia2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From3"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"Sum6"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 25; 35, 0]
+	DstBlock		"Sum7"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "From4"
+      SrcPort		      1
+      Points		      [45, 0]
+      DstBlock		      "Sum6"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From5"
+      SrcPort		      1
+      DstBlock		      "Sum7"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Sum1"
+      SrcBlock		      "Sum7"
       SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_pomieszczenia"
+      DstBlock		      "pojemnosc_cieplna_pomieszczenia3"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "pojemnosc_cieplna_pomieszczenia"
-      SrcPort		      1
-      DstBlock		      "Integrator"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum2"
-      SrcPort		      1
-      DstBlock		      "stala_oddawania_temp_z_grzejnika"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum3"
-      SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_grzejnika"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "pojemnosc_cieplna_grzejnika"
+      SrcBlock		      "pojemnosc_cieplna_pomieszczenia4"
       SrcPort		      1
       DstBlock		      "Integrator1"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Sum"
+      SrcBlock		      "Integrator1"
       SrcPort		      1
-      DstBlock		      "stala_oddawania_temp_z_pomieszczenia_na_zewnatrz"
+      Points		      [15, 0]
+      Branch {
+	DstBlock		"Goto1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -65]
+	DstBlock		"Scope4"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "pojemnosc_cieplna_pomieszczenia4"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "stala_oddawania_temp_z_pomieszczenia_na_zewnatrz"
+      SrcBlock		      "Sum2"
       SrcPort		      1
-      Points		      [-30, 0]
-      DstBlock		      "Sum1"
+      DstBlock		      "pojemnosc_cieplna_pomieszczenia5"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "From"
+      SrcBlock		      "From6"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"Sum2"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 25; 35, 0]
+	DstBlock		"Sum3"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "From7"
       SrcPort		      1
       Points		      [45, 0]
       DstBlock		      "Sum2"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "zaklucenia_zewnetrzne"
+      SrcBlock		      "pojemnosc_cieplna_pomieszczenia5"
       SrcPort		      1
       DstBlock		      "Sum1"
-      DstPort		      2
+      DstPort		      1
     }
     Line {
       SrcBlock		      "From1"
       SrcPort		      1
+      DstBlock		      "Sum3"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "From8"
+      SrcPort		      1
+      DstBlock		      "pojemnosc_cieplna_pomieszczenia6"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "pojemnosc_cieplna_pomieszczenia6"
+      SrcPort		      1
+      Points		      [25, 0]
+      DstBlock		      "Product"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Sum3"
+      SrcPort		      1
+      DstBlock		      "Product"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Product"
+      SrcPort		      1
       Points		      [40, 0]
       DstBlock		      "Sum1"
-      DstPort		      3
+      DstPort		      2
     }
-    Annotation {
-      SID		      "21"
-      Name		      "cieplo_oddawane_z_pomieszczenia_na_zewnatrz"
-      Position		      [698, 127]
+    Line {
+      SrcBlock		      "Fg"
+      SrcPort		      1
+      Points		      [20, 0]
+      Branch {
+	Points			[0, 45]
+	DstBlock		"Scope2"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Goto4"
+	DstPort			1
+      }
     }
-    Annotation {
-      SID		      "46"
-      Name		      "temp_pomieszczenia"
-      Position		      [977, 206]
-    }
-    Annotation {
-      SID		      "48"
-      Name		      "roznica_temperatur_grzejnik_pokoj"
-      Position		      [547, 609]
+    Line {
+      SrcBlock		      "Tgz"
+      SrcPort		      1
+      Points		      [20, 0]
+      Branch {
+	Points			[0, 45]
+	DstBlock		"Scope5"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Goto6"
+	DstPort			1
+      }
     }
   }
 }
