@@ -46,7 +46,8 @@ cpp = cpp_;        % [J / kg*K] cieplo wlasciwe powietrza
 rop = rop_;       % [kg / m3] gestosc powietrza
 
 Cvg = cpw*row*Vg;  % [W] pojemnosc cieplna grzejnika
-Cvw = cpp*rop*Vp;  % [W] pojemnosc cieplna pomieszczenia
+Cvw = cpp*rop*Vp*3;  % [W] pojemnosc cieplna pomieszczenia
+% (* 3) uwzglêdaniamy te¿ pojemnoœæ ciepln¹ œcian itp
 
 %% wartosci nominalne
 
