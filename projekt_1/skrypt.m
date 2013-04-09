@@ -19,8 +19,8 @@ cpp = 1008;        % [J / kg*K] cieplo wlasciwe powietrza
 rop = 1.185;       % [kg / m3] gestosc powietrza
 
 Cvg = cpw*row*Vg;  % [W] pojemnosc cieplna grzejnika
-Cvw = cpp*rop*Vp*3;  % [W] pojemnosc cieplna pomieszczenia 
-% (* 3) uwzglêdaniamy te¿ pojemnoœæ ciepln¹ œcian itp
+Cvw = cpp*rop*Vp*5;  % [W] pojemnosc cieplna pomieszczenia 
+% (* 5) uwzglêdaniamy te¿ pojemnoœæ ciepln¹ œcian mebli itp
 
 %% wartosci nominalne
 
@@ -35,7 +35,7 @@ Fg_n = Q_n/(cpw*row*(Tgz_n-Tgp_n)); % [m3 / s] przeplyw wody przez grzejnik
 
 %% wartosci poczatkowe
 
-Tzew_0 = Tzew_n;   % [C] temperatura zewnetrzna
+Tzew_0 = Tzew_n - 20;   % [C] temperatura zewnetrzna
 Twew_0 = Twew_n;   % [C] temperatura wewnetrzna
 Tgz_0 = Tgz_n;     % [C] temperatura zasilania grzejnika
 Tgsr_0 = Tgsr_n;   % [C] temperatura powrotu z grzejnika

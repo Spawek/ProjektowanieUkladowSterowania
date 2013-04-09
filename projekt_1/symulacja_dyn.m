@@ -1,4 +1,4 @@
-function [out_data] = symulacja( Vg_,  Vp_, cpw_, row_, cpp_, rop_, Tzew_n_, Twew_n_, Tgz_n_, Tgp_n_, Q_n_, dTzew_, dTgz_, dFg_, dQt_)
+function [out_data] = symulacja( Vg_,  Vp_, cpw_, row_, cpp_, rop_, Tzew_0_, Twew_0_, Tgz_0_, Tgp_0_, Q_n_, dTzew_, dTgz_, dFg_, dQt_)
 % out_data = [time', temp_wewnatrz', temp_grzejnika]
 
 
@@ -9,11 +9,6 @@ global cpw
 global row
 global cpp
 global rop
-global Tzew_n
-global Twew_n
-global Tgz_n
-global Tgsr_n
-global Fg_n
 global Q_n
 global Tzew_0
 global Twew_0
@@ -28,6 +23,8 @@ global dQt
 global dt
 global kw
 global kg
+global Cvg
+global Cvw
 
 %% inicjalizacja parametrow
 
@@ -46,26 +43,20 @@ cpp = cpp_;        % [J / kg*K] cieplo wlasciwe powietrza
 rop = rop_;       % [kg / m3] gestosc powietrza
 
 Cvg = cpw*row*Vg;  % [W] pojemnosc cieplna grzejnika
-Cvw = cpp*rop*Vp*3;  % [W] pojemnosc cieplna pomieszczenia
-% (* 3) uwzglêdaniamy te¿ pojemnoœæ ciepln¹ œcian itp
+Cvw = cpp*rop*Vp*5;  % [W] pojemnosc cieplna pomieszczenia
+% (* 5) uwzglêdaniamy te¿ pojemnoœæ ciepln¹ œcian, mebli itp
 
-%% wartosci nominalne
+Q_n = 20000;       % [W] cieplo wymagane
 
-Tzew_n = Tzew_n_;      % [C] temperatura zewnetrzna
-Twew_n = Twew_n_;       % [C] temperatura wewnetrzna
-Tgz_n = Tgz_n_;        % [C] temperatura zasilania grzejnika
-Tgp_n = Tgp_n_;        % [C] temperatura powrotu z grzejnika
-Q_n = Q_n_;       % [W] cieplo wymagane
-
-Tgsr_n = Tgp_n;                     % [C] temperatura srednia grzejnika
-Fg_n = Q_n/(cpw*row*(Tgz_n-Tgp_n)); % [m3 / s] przeplyw wody przez grzejnik
+%Tgsr_0 = Tgp_n;                     % [C] temperatura srednia grzejnika
+Fg_n = Q_n/(cpw*row*(20-(-20))); % [m3 / s] przeplyw wody przez grzejnik
 
 %% wartosci poczatkowe
 
-Tzew_0 = Tzew_n;   % [C] temperatura zewnetrzna
-Twew_0 = Twew_n;   % [C] temperatura wewnetrzna
-Tgz_0 = Tgz_n;     % [C] temperatura zasilania grzejnika
-Tgsr_0 = Tgsr_n;   % [C] temperatura powrotu z grzejnika
+Tzew_0 = Tzew_0_;   % [C] temperatura zewnetrzna
+Twew_0 = Twew_0_;   % [C] temperatura wewnetrzna
+Tgz_0 = Tgz_0_;     % [C] temperatura zasilania grzejnika
+Tgsr_0 = Tgp_0_;   % [C] temperatura powrotu z grzejnika
 Fg_0 = Fg_n;       % [m3 / s] przeplyw wody przez grzejnik
 Qt_0 = 0;          % [W] straty/zyski technologiczne
 
@@ -78,8 +69,8 @@ dQt = dQt_;           % [W] straty/zyski technologiczne
 
 %% wspolczynniki
 
-kg = Q_n/(Tgsr_n-Twew_n);         % wspolczynnik przewodzenia grzejnika
-kw = (Q_n-Qt_0)/(Twew_n-Tzew_n);  % wspolczynnik przewodzenia scian
+kg = Q_n/(20-(-20));       % wspolczynnik przewodzenia grzejnika
+kw = (Q_n-Qt_0)/(20-(-20));  % wspolczynnik przewodzenia scian
 
 %% symulacja
 
