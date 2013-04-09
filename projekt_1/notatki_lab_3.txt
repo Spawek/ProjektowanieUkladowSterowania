@@ -1,4 +1,0 @@
-zrobic identyfikacje metoda Kompfmollera dla 4 obiektow 
-    4 obiekty, bo mamy 2 wejœcia i 2 wyjœcia - wiêc istniej¹ 4 kombinacje
-
-potem dla 1 obiektu metod¹ momentów i metod¹ Stracea

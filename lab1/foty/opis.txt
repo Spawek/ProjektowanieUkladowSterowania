@@ -1,0 +1,5 @@
+te nie opisane miaj¹ zmianê = 0
+1. dFg = 10;
+2. dTzew = 10;
+3. dTgz = 10;
+4. dQt = 1000;

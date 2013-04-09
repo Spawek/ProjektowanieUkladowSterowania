@@ -1,12 +1,12 @@
 Model {
-  Name			  "lab1_model"
+  Name			  "lab2_PI_Tgz"
   Version		  7.6
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.31"
+    ComputedModelVersion    "1.45"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,11 +24,11 @@ Model {
   Creator		  "LAB320-1537-User"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "qrczak"
+  LastModifiedBy	  "Tomek"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Mar 04 19:50:39 2013"
-  RTWModifiedTimeStamp	  284326051
-  ModelVersionFormat	  "1.%<AutoIncrement:31>"
+  LastModifiedDate	  "Mon Apr 08 17:32:49 2013"
+  RTWModifiedTimeStamp	  287342686
+  ModelVersionFormat	  "1.%<AutoIncrement:45>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -111,7 +111,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.10.0"
 	  StartTime		  "0.0"
-	  StopTime		  "20"
+	  StopTime		  "1000"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -621,6 +621,10 @@ Model {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Clock
+      DisplayTime	      off
+    }
+    Block {
       BlockType		      From
       IconDisplay	      "Tag"
       TagVisibility	      "local"
@@ -645,6 +649,23 @@ Model {
       IconDisplay	      "Tag"
     }
     Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
       BlockType		      Integrator
       ExternalReset	      "none"
       InitialConditionSource  "internal"
@@ -658,6 +679,23 @@ Model {
       IgnoreLimit	      off
       ZeroCross		      on
       ContinuousStateAttributes	"''"
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
     }
     Block {
       BlockType		      Product
@@ -701,6 +739,28 @@ Model {
       ZeroCross		      on
     }
     Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      Variant		      off
+      GeneratePreprocessorConditionals off
+    }
+    Block {
       BlockType		      Sum
       IconShape		      "rectangular"
       Inputs		      "++"
@@ -716,10 +776,18 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      ToWorkspace
+      VariableName	      "simulink_output"
+      MaxDataPoints	      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      FixptAsFi		      off
+    }
   }
   System {
-    Name		    "lab1_model"
-    Location		    [2, 74, 1278, 659]
+    Name		    "lab2_PI_Tgz"
+    Location		    [2, 82, 1278, 667]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -733,12 +801,19 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "109"
+    SIDHighWatermark	    "153"
+    Block {
+      BlockType		      Clock
+      Name		      "Clock"
+      SID		      "151"
+      Position		      [535, 345, 555, 365]
+      Decimation	      "10"
+    }
     Block {
       BlockType		      Step
       Name		      "Fg"
       SID		      "106"
-      Position		      [185, 25, 215, 55]
+      Position		      [15, 130, 45, 160]
       Time		      "dt"
       Before		      "Fg_0"
       After		      "Fg_0+dFg"
@@ -746,92 +821,33 @@ Model {
     }
     Block {
       BlockType		      From
-      Name		      "From1"
-      SID		      "98"
-      Position		      [30, 456, 70, 484]
-      GotoTag		      "Tgz"
-      IconDisplay	      "Signal name"
-    }
-    Block {
-      BlockType		      From
       Name		      "From2"
       SID		      "76"
-      Position		      [180, 161, 220, 189]
+      Position		      [670, 26, 710, 54]
       GotoTag		      "Qt"
-      IconDisplay	      "Signal name"
-    }
-    Block {
-      BlockType		      From
-      Name		      "From3"
-      SID		      "80"
-      Position		      [30, 226, 70, 254]
-      GotoTag		      "Twew"
       IconDisplay	      "Signal name"
     }
     Block {
       BlockType		      From
       Name		      "From4"
       SID		      "81"
-      Position		      [30, 161, 70, 189]
+      Position		      [605, 26, 645, 54]
       GotoTag		      "Tzew"
-      IconDisplay	      "Signal name"
-    }
-    Block {
-      BlockType		      From
-      Name		      "From5"
-      SID		      "82"
-      Position		      [30, 286, 70, 314]
-      GotoTag		      "Tgsr"
-      IconDisplay	      "Signal name"
-    }
-    Block {
-      BlockType		      From
-      Name		      "From6"
-      SID		      "86"
-      Position		      [30, 396, 70, 424]
-      GotoTag		      "Tgsr"
-      IconDisplay	      "Signal name"
-    }
-    Block {
-      BlockType		      From
-      Name		      "From7"
-      SID		      "87"
-      Position		      [30, 356, 70, 384]
-      ShowName		      off
-      GotoTag		      "Twew"
       IconDisplay	      "Signal name"
     }
     Block {
       BlockType		      From
       Name		      "From8"
       SID		      "102"
-      Position		      [30, 511, 70, 539]
+      Position		      [670, 186, 710, 214]
       GotoTag		      "Fg"
       IconDisplay	      "Signal name"
     }
     Block {
       BlockType		      Goto
-      Name		      "Goto1"
-      SID		      "89"
-      Position		      [480, 395, 520, 425]
-      ShowName		      off
-      GotoTag		      "Tgsr"
-      TagVisibility	      "local"
-    }
-    Block {
-      BlockType		      Goto
-      Name		      "Goto2"
-      SID		      "62"
-      Position		      [480, 225, 520, 255]
-      ShowName		      off
-      GotoTag		      "Twew"
-      TagVisibility	      "local"
-    }
-    Block {
-      BlockType		      Goto
       Name		      "Goto3"
       SID		      "67"
-      Position		      [105, 25, 145, 55]
+      Position		      [110, 25, 150, 55]
       ShowName		      off
       GotoTag		      "Qt"
       TagVisibility	      "local"
@@ -840,7 +856,7 @@ Model {
       BlockType		      Goto
       Name		      "Goto4"
       SID		      "104"
-      Position		      [280, 25, 320, 55]
+      Position		      [110, 130, 150, 160]
       ShowName		      off
       GotoTag		      "Fg"
       TagVisibility	      "local"
@@ -849,66 +865,588 @@ Model {
       BlockType		      Goto
       Name		      "Goto5"
       SID		      "69"
-      Position		      [450, 25, 490, 55]
+      Position		      [110, 240, 150, 270]
       ShowName		      off
       GotoTag		      "Tzew"
       TagVisibility	      "local"
     }
     Block {
-      BlockType		      Goto
-      Name		      "Goto6"
-      SID		      "107"
-      Position		      [625, 25, 665, 55]
-      ShowName		      off
-      GotoTag		      "Tgz"
-      TagVisibility	      "local"
-    }
-    Block {
-      BlockType		      Integrator
-      Name		      "Integrator1"
-      SID		      "90"
-      Ports		      [1, 1]
-      Position		      [410, 395, 440, 425]
-      ShowName		      off
-      InitialCondition	      "Tgsr_0"
-    }
-    Block {
-      BlockType		      Integrator
-      Name		      "Integrator2"
-      SID		      "60"
-      Ports		      [1, 1]
-      Position		      [410, 225, 440, 255]
-      ShowName		      off
-      InitialCondition	      "Twew_0"
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product"
-      SID		      "103"
-      Ports		      [2, 1]
-      Position		      [185, 462, 215, 493]
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      SubSystem
+      Name		      "Obiekt"
+      SID		      "129"
+      Ports		      [4, 2]
+      Position		      [745, 75, 910, 220]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskPromptString	      "Temp. pocz. wewnatrz|Temp. pocz. grzejnika|Wsp. przewodzenia grzejnika|Wsp. przewodzenia"
+      " scian|Pojemnosc cieplna grzejnika|Pojemnosc cieplna pomieszczenia"
+      MaskStyleString	      "edit,edit,edit,edit,edit,edit"
+      MaskVariables	      "Twew_0=@1;Tgsr_0=@2;kg=@3;kw=@4;Cvg=@5;Cvw=@6;"
+      MaskTunableValueString  "on,on,on,on,on,on"
+      MaskCallbackString      "|||||"
+      MaskEnableString	      "on,on,on,on,on,on"
+      MaskVisibilityString    "on,on,on,on,on,on"
+      MaskToolTipString	      "on,on,on,on,on,on"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "Twew_0|Tgsr_0|kg|kw|Cvg|Cvw"
+      System {
+	Name			"Obiekt"
+	Location		[2, 82, 1262, 667]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "qt"
+	  SID			  "130"
+	  Position		  [35, 23, 65, 37]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Tzew"
+	  SID			  "131"
+	  Position		  [35, 103, 65, 117]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Tgz"
+	  SID			  "134"
+	  Position		  [35, 308, 65, 322]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "fg"
+	  SID			  "135"
+	  Position		  [35, 363, 65, 377]
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator1"
+	  SID			  "90"
+	  Ports			  [1, 1]
+	  Position		  [440, 240, 470, 270]
+	  ShowName		  off
+	  InitialCondition	  "Tgsr_0"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator2"
+	  SID			  "60"
+	  Ports			  [1, 1]
+	  Position		  [440, 70, 470, 100]
+	  ShowName		  off
+	  InitialCondition	  "Twew_0"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "103"
+	  Ports			  [2, 1]
+	  Position		  [215, 307, 245, 338]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum1"
+	  SID			  "92"
+	  Ports			  [2, 1]
+	  Position		  [280, 245, 300, 265]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|-+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum2"
+	  SID			  "93"
+	  Ports			  [2, 1]
+	  Position		  [155, 245, 175, 265]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "-+|"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum3"
+	  SID			  "100"
+	  Ports			  [2, 1]
+	  Position		  [110, 305, 130, 325]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "-+|"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum5"
+	  SID			  "75"
+	  Ports			  [3, 1]
+	  Position		  [280, 75, 300, 95]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "+-+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum6"
+	  SID			  "79"
+	  Ports			  [2, 1]
+	  Position		  [155, 75, 175, 95]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|+-"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum7"
+	  SID			  "84"
+	  Ports			  [2, 1]
+	  Position		  [110, 135, 130, 155]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "-|+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "pojemnosc_cieplna_pomieszczenia1"
+	  SID			  "61"
+	  Position		  [350, 58, 415, 112]
+	  ShowName		  off
+	  Gain			  "1/Cvw"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "pojemnosc_cieplna_pomieszczenia2"
+	  SID			  "77"
+	  Position		  [210, 66, 250, 104]
+	  ShowName		  off
+	  Gain			  "kw"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "pojemnosc_cieplna_pomieszczenia3"
+	  SID			  "78"
+	  Position		  [210, 126, 250, 164]
+	  ShowName		  off
+	  Gain			  "kg"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "pojemnosc_cieplna_pomieszczenia4"
+	  SID			  "95"
+	  Position		  [350, 228, 415, 282]
+	  ShowName		  off
+	  Gain			  "1/Cvg"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "pojemnosc_cieplna_pomieszczenia5"
+	  SID			  "96"
+	  Position		  [210, 236, 250, 274]
+	  ShowName		  off
+	  Gain			  "kg"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "pojemnosc_cieplna_pomieszczenia6"
+	  SID			  "101"
+	  Position		  [100, 351, 140, 389]
+	  ShowName		  off
+	  Gain			  "cpw*row"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Twew"
+	  SID			  "132"
+	  Position		  [555, 78, 585, 92]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Tgsr"
+	  SID			  "133"
+	  Position		  [555, 248, 585, 262]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "pojemnosc_cieplna_pomieszczenia1"
+	  SrcPort		  1
+	  DstBlock		  "Integrator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Integrator2"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    Points		    [0, 100; -330, 0]
+	    DstBlock		    "Sum2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Twew"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -40; -375, 0; 0, 40]
+	    Branch {
+	      DstBlock		      "Sum7"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Sum6"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Sum5"
+	  SrcPort		  1
+	  DstBlock		  "pojemnosc_cieplna_pomieszczenia1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "pojemnosc_cieplna_pomieszczenia2"
+	  SrcPort		  1
+	  DstBlock		  "Sum5"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "pojemnosc_cieplna_pomieszczenia3"
+	  SrcPort		  1
+	  Points		  [35, 0]
+	  DstBlock		  "Sum5"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Sum6"
+	  SrcPort		  1
+	  DstBlock		  "pojemnosc_cieplna_pomieszczenia2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Sum7"
+	  SrcPort		  1
+	  DstBlock		  "pojemnosc_cieplna_pomieszczenia3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "pojemnosc_cieplna_pomieszczenia4"
+	  SrcPort		  1
+	  DstBlock		  "Integrator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Integrator1"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    Points		    [0, -45; -370, 0]
+	    Branch {
+	      DstBlock		      "Sum7"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, 45]
+	      Branch {
+		DstBlock		"Sum2"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Sum3"
+		DstPort			1
+	      }
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Tgsr"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Sum1"
+	  SrcPort		  1
+	  DstBlock		  "pojemnosc_cieplna_pomieszczenia4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Sum2"
+	  SrcPort		  1
+	  DstBlock		  "pojemnosc_cieplna_pomieszczenia5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "pojemnosc_cieplna_pomieszczenia5"
+	  SrcPort		  1
+	  DstBlock		  "Sum1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "pojemnosc_cieplna_pomieszczenia6"
+	  SrcPort		  1
+	  Points		  [55, 0]
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Sum3"
+	  SrcPort		  1
+	  DstBlock		  "Product"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  Points		  [40, 0]
+	  DstBlock		  "Sum1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "qt"
+	  SrcPort		  1
+	  Points		  [220, 0]
+	  DstBlock		  "Sum5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Tgz"
+	  SrcPort		  1
+	  DstBlock		  "Sum3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "fg"
+	  SrcPort		  1
+	  DstBlock		  "pojemnosc_cieplna_pomieszczenia6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Tzew"
+	  SrcPort		  1
+	  DstBlock		  "Sum6"
+	  DstPort		  2
+	}
+      }
     }
     Block {
       BlockType		      Step
       Name		      "Qt"
       SID		      "64"
-      Position		      [20, 25, 50, 55]
+      Position		      [15, 25, 45, 55]
       Time		      "dt"
       Before		      "Qt_0"
       After		      "Qt_0+dQt"
       SampleTime	      "0"
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "Regulator PI"
+      SID		      "140"
+      Ports		      [1, 1]
+      Position		      [510, 135, 575, 195]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskPromptString	      "Wzmocnienie reg. P|Wzmocnienie reg. I|Wartosc poczatkowa"
+      MaskStyleString	      "edit,edit,edit"
+      MaskVariables	      "kp=@1;ki=@2;Up=@3;"
+      MaskTunableValueString  "on,on,on"
+      MaskCallbackString      "||"
+      MaskEnableString	      "on,on,on"
+      MaskVisibilityString    "on,on,on"
+      MaskToolTipString	      "on,on,on"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "kp|ki|Tr_0"
+      System {
+	Name			"Regulator PI"
+	Location		[267, 199, 607, 336]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Wej"
+	  SID			  "141"
+	  Position		  [25, 33, 55, 47]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "136"
+	  Position		  [165, 25, 195, 55]
+	  Gain			  "kp"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "139"
+	  Position		  [100, 80, 130, 110]
+	  Gain			  "ki"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator"
+	  SID			  "137"
+	  Ports			  [1, 1]
+	  Position		  [165, 80, 195, 110]
+	  InitialCondition	  "Up"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "138"
+	  Ports			  [2, 1]
+	  Position		  [240, 30, 260, 50]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|++"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Wyj"
+	  SID			  "142"
+	  Position		  [285, 33, 315, 47]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Integrator"
+	  SrcPort		  1
+	  Points		  [50, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Wej"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    DstBlock		    "Gain"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 55]
+	    DstBlock		    "Gain1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  DstBlock		  "Wyj"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
       BlockType		      Scope
       Name		      "Scope"
       SID		      "63"
       Ports		      [1]
-      Position		      [485, 159, 515, 191]
+      Position		      [980, 49, 1010, 81]
       Floating		      off
-      Location		      [1, 48, 1281, 679]
+      Location		      [6, 217, 554, 714]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -924,7 +1462,7 @@ Model {
       Name		      "Scope1"
       SID		      "70"
       Ports		      [1]
-      Position		      [110, 69, 140, 101]
+      Position		      [115, 69, 145, 101]
       Floating		      off
       Location		      [188, 390, 512, 629]
       Open		      off
@@ -942,7 +1480,7 @@ Model {
       Name		      "Scope2"
       SID		      "105"
       Ports		      [1]
-      Position		      [285, 69, 315, 101]
+      Position		      [115, 174, 145, 206]
       Floating		      off
       Location		      [1, 48, 1281, 679]
       Open		      off
@@ -961,7 +1499,7 @@ Model {
       Name		      "Scope3"
       SID		      "73"
       Ports		      [1]
-      Position		      [455, 69, 485, 101]
+      Position		      [115, 284, 145, 316]
       Floating		      off
       Location		      [188, 390, 512, 629]
       Open		      off
@@ -979,7 +1517,7 @@ Model {
       Name		      "Scope4"
       SID		      "91"
       Ports		      [1]
-      Position		      [485, 329, 515, 361]
+      Position		      [980, 234, 1010, 266]
       Floating		      off
       Location		      [188, 390, 512, 629]
       Open		      off
@@ -994,9 +1532,9 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope5"
-      SID		      "108"
+      SID		      "147"
       Ports		      [1]
-      Position		      [630, 69, 660, 101]
+      Position		      [420, 79, 450, 111]
       Floating		      off
       Location		      [188, 390, 512, 629]
       Open		      off
@@ -1010,188 +1548,128 @@ Model {
       SampleTime	      "0"
     }
     Block {
+      BlockType		      Scope
+      Name		      "Scope6"
+      SID		      "148"
+      Ports		      [1]
+      Position		      [510, 79, 540, 111]
+      Floating		      off
+      Location		      [6, 217, 554, 714]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData6"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope7"
+      SID		      "149"
+      Ports		      [1]
+      Position		      [605, 99, 635, 131]
+      Floating		      off
+      Location		      [194, 102, 742, 599]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData7"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
       BlockType		      Sum
-      Name		      "Sum1"
-      SID		      "92"
+      Name		      "Sum"
+      SID		      "144"
       Ports		      [2, 1]
-      Position		      [250, 400, 270, 420]
+      Position		      [425, 155, 445, 175]
       ShowName		      off
       IconShape		      "round"
-      Inputs		      "|-+"
+      Inputs		      "|+-"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum2"
-      SID		      "93"
-      Ports		      [2, 1]
-      Position		      [110, 400, 130, 420]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "-+|"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      ToWorkspace
+      Name		      "To Workspace"
+      SID		      "111"
+      Ports		      [1]
+      Position		      [965, 170, 1025, 200]
+      VariableName	      "Tgsr"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum3"
-      SID		      "100"
-      Ports		      [2, 1]
-      Position		      [110, 460, 130, 480]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "-+|"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      SID		      "112"
+      Ports		      [1]
+      Position		      [1090, 100, 1150, 130]
+      VariableName	      "Twew"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum5"
-      SID		      "75"
-      Ports		      [3, 1]
-      Position		      [250, 230, 270, 250]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "+-+"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      ToWorkspace
+      Name		      "To Workspace2"
+      SID		      "150"
+      Ports		      [1]
+      Position		      [610, 235, 670, 265]
+      VariableName	      "Tgz"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum6"
-      SID		      "79"
-      Ports		      [2, 1]
-      Position		      [110, 230, 130, 250]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "-+|"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      ToWorkspace
+      Name		      "To Workspace3"
+      SID		      "152"
+      Ports		      [1]
+      Position		      [610, 340, 670, 370]
+      VariableName	      "t"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum7"
-      SID		      "84"
-      Ports		      [2, 1]
-      Position		      [110, 290, 130, 310]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "-+|"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      ToWorkspace
+      Name		      "To Workspace4"
+      SID		      "153"
+      Ports		      [1]
+      Position		      [350, 220, 410, 250]
+      VariableName	      "Twew_z"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
     }
     Block {
       BlockType		      Step
-      Name		      "Tgz"
-      SID		      "109"
-      Position		      [530, 25, 560, 55]
+      Name		      "Twew_z"
+      SID		      "146"
+      Position		      [265, 150, 295, 180]
       Time		      "dt"
-      Before		      "Tgz_0"
-      After		      "Tgz_0+dTgz"
+      Before		      "Twew_z0"
+      After		      "Twew_z0+dTwew_z"
       SampleTime	      "0"
     }
     Block {
       BlockType		      Step
       Name		      "Tzew"
       SID		      "65"
-      Position		      [355, 25, 385, 55]
+      Position		      [15, 240, 45, 270]
       Time		      "dt"
       Before		      "Tzew_0"
       After		      "Tzew_0+dTzew"
       SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "pojemnosc_cieplna_pomieszczenia1"
-      SID		      "61"
-      Position		      [320, 213, 385, 267]
-      ShowName		      off
-      Gain		      "1/Cvw"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "pojemnosc_cieplna_pomieszczenia2"
-      SID		      "77"
-      Position		      [180, 221, 220, 259]
-      ShowName		      off
-      Gain		      "kw"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "pojemnosc_cieplna_pomieszczenia3"
-      SID		      "78"
-      Position		      [180, 281, 220, 319]
-      ShowName		      off
-      Gain		      "kg"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "pojemnosc_cieplna_pomieszczenia4"
-      SID		      "95"
-      Position		      [320, 383, 385, 437]
-      ShowName		      off
-      Gain		      "1/Cvg"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "pojemnosc_cieplna_pomieszczenia5"
-      SID		      "96"
-      Position		      [180, 391, 220, 429]
-      ShowName		      off
-      Gain		      "kg"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "pojemnosc_cieplna_pomieszczenia6"
-      SID		      "101"
-      Position		      [100, 506, 140, 544]
-      ShowName		      off
-      Gain		      "cpw*row"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Line {
-      SrcBlock		      "pojemnosc_cieplna_pomieszczenia1"
-      SrcPort		      1
-      DstBlock		      "Integrator2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Integrator2"
-      SrcPort		      1
-      Points		      [15, 0]
-      Branch {
-	DstBlock		"Goto2"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -65]
-	DstBlock		"Scope"
-	DstPort			1
-      }
     }
     Line {
       SrcBlock		      "Qt"
@@ -1222,160 +1700,36 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "Sum5"
-      SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_pomieszczenia1"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "From2"
       SrcPort		      1
-      Points		      [35, 0]
-      DstBlock		      "Sum5"
+      Points		      [0, 55]
+      DstBlock		      "Obiekt"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "pojemnosc_cieplna_pomieszczenia2"
+      SrcBlock		      "Regulator PI"
       SrcPort		      1
-      DstBlock		      "Sum5"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "pojemnosc_cieplna_pomieszczenia3"
-      SrcPort		      1
-      Points		      [35, 0]
-      DstBlock		      "Sum5"
-      DstPort		      3
-    }
-    Line {
-      SrcBlock		      "Sum6"
-      SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_pomieszczenia2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "From3"
-      SrcPort		      1
-      Points		      [10, 0]
+      Points		      [5, 0]
       Branch {
-	DstBlock		"Sum6"
-	DstPort			2
+	DstBlock		"Obiekt"
+	DstPort			3
       }
       Branch {
-	Points			[0, 25; 35, 0]
-	DstBlock		"Sum7"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "From4"
-      SrcPort		      1
-      Points		      [45, 0]
-      DstBlock		      "Sum6"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "From5"
-      SrcPort		      1
-      DstBlock		      "Sum7"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Sum7"
-      SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_pomieszczenia3"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "pojemnosc_cieplna_pomieszczenia4"
-      SrcPort		      1
-      DstBlock		      "Integrator1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Integrator1"
-      SrcPort		      1
-      Points		      [15, 0]
-      Branch {
-	DstBlock		"Goto1"
+	Points			[0, -50]
+	DstBlock		"Scope7"
 	DstPort			1
       }
       Branch {
-	Points			[0, -65]
-	DstBlock		"Scope4"
+	Points			[0, 85]
+	DstBlock		"To Workspace2"
 	DstPort			1
       }
-    }
-    Line {
-      SrcBlock		      "Sum1"
-      SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_pomieszczenia4"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum2"
-      SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_pomieszczenia5"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "From6"
-      SrcPort		      1
-      Points		      [10, 0]
-      Branch {
-	DstBlock		"Sum2"
-	DstPort			2
-      }
-      Branch {
-	Points			[0, 25; 35, 0]
-	DstBlock		"Sum3"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "From7"
-      SrcPort		      1
-      Points		      [45, 0]
-      DstBlock		      "Sum2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "pojemnosc_cieplna_pomieszczenia5"
-      SrcPort		      1
-      DstBlock		      "Sum1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "From1"
-      SrcPort		      1
-      DstBlock		      "Sum3"
-      DstPort		      2
     }
     Line {
       SrcBlock		      "From8"
       SrcPort		      1
-      DstBlock		      "pojemnosc_cieplna_pomieszczenia6"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "pojemnosc_cieplna_pomieszczenia6"
-      SrcPort		      1
-      Points		      [25, 0]
-      DstBlock		      "Product"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Sum3"
-      SrcPort		      1
-      DstBlock		      "Product"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Product"
-      SrcPort		      1
-      Points		      [40, 0]
-      DstBlock		      "Sum1"
-      DstPort		      2
+      DstBlock		      "Obiekt"
+      DstPort		      4
     }
     Line {
       SrcBlock		      "Fg"
@@ -1392,18 +1746,89 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "Tgz"
+      SrcBlock		      "Obiekt"
       SrcPort		      1
       Points		      [20, 0]
       Branch {
-	Points			[0, 45]
-	DstBlock		"Scope5"
+	Points			[0, -50]
+	DstBlock		"Scope"
 	DstPort			1
       }
       Branch {
-	DstBlock		"Goto6"
+	Points			[125, 0]
+	Branch {
+	  DstBlock		  "To Workspace1"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, 200; -625, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Obiekt"
+      SrcPort		      2
+      Points		      [20, 0]
+      Branch {
+	DstBlock		"To Workspace"
 	DstPort			1
       }
+      Branch {
+	Points			[0, 65]
+	DstBlock		"Scope4"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "From4"
+      SrcPort		      1
+      Points		      [0, 90]
+      DstBlock		      "Obiekt"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      Points		      [20, 0]
+      Branch {
+	DstBlock		"Regulator PI"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -70]
+	DstBlock		"Scope6"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Twew_z"
+      SrcPort		      1
+      Points		      [20, 0]
+      Branch {
+	Points			[60, 0]
+	Branch {
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -70]
+	  DstBlock		  "Scope5"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	Points			[0, 70]
+	DstBlock		"To Workspace4"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Clock"
+      SrcPort		      1
+      DstBlock		      "To Workspace3"
+      DstPort		      1
     }
   }
 }
